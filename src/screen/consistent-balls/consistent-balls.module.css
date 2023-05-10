@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.item {
+    height: 100px;
+    width: 100px;
+    background-color: #e7e9eb;
+    border-radius: 50%;
+    position: absolute;
+}
