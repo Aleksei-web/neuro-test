@@ -27,7 +27,7 @@ export const StepNumbers = ({numbers, time, setIsDone}: IStepNumbers) => {
   }
 
   return <>
-    {currentNumber === null && <div className={styles.oneStep} style={{fontSize: '24px'}}>очередь компютера</div>}
+    {currentNumber === null && <div className={styles.oneStep} style={{fontSize: '24px'}}>очередь компьютера</div>}
     {currentNumber !== null && <div className={styles.oneStep}>{currentNumber}</div>}
   </>
 }

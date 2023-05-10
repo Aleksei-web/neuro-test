@@ -1,8 +1,8 @@
-import {MouseEvent, MouseEventHandler, useEffect, useLayoutEffect, useRef, useState} from "react";
-import {Circle} from "../components/figure/Circle";
-import {Polygon} from "../components/figure/Polygon";
+import {MouseEvent, useEffect, useRef, useState} from "react";
+import {Circle} from "../../components/figure/Circle";
+import {Polygon} from "../../components/figure/Polygon";
 
-export const Solutions = () => {
+export const SolutionRun = () => {
   const RADIUS = 50
   const containerRef = useRef(null);
   const [containerSize, setContainerSize] = useState({width: 0, height: 0})
@@ -68,10 +68,9 @@ export const Solutions = () => {
   const movePolygon = (x: number, y: number) => {
     setPositionPolygon({x, y})
   }
-  return <div className="speed-screen">
-    <div className='speed-container position-relative' ref={containerRef}>
-      <Circle handleClick={handleClick} position={positionCircle}/>
-      {visiblePolygon && <Polygon position={positionPolygon}/>}
-    </div>
+
+  return <div className='speed-container position-relative' ref={containerRef}>
+    <Circle handleClick={handleClick} position={positionCircle}/>
+    {visiblePolygon && <Polygon position={positionPolygon}/>}
   </div>
 }

@@ -1,44 +1,37 @@
-import {GreedBalls} from "./GreedBalls";
 import styled from './consistent-balls.module.css'
-import {useEffect, useState} from "react";
+import {ConsistentBallsRun} from "./ConsistentBallsRun";
+import {useState} from "react";
+import {Instruction} from "../../components/instruction/Instruction";
 
-const path = [1, 5, 3, 9]
+const instruction = `Вы увидите, как в определённом порядке загораются круги.
+Внимательно наблюдайте за ними и запомните порядок, чтобы воспроизвести его, когда придёт ваша очередь.
+
+Нажмите на "НАЧАТЬ", когда будете готовы.`
+
+const skill = [
+  'Время реакции',
+  'Кратковременная зрительная память',
+  'Кратковременная память',
+  'Невербальная память',
+  'Планирование',
+  'Пространственное восприятие',
+  'Рабочая память',
+  'Скорость обработки информации'
+]
+
+const imgName = 'consistent.jpg'
 
 export const ConsistentBalls = () => {
-  const [isRun, setIsRun] = useState(false)
-  const [selectedBall, setSelectedBall] = useState(-1)
-  const [isStepUser, setIsStepUser] = useState(false)
-  const [userStep, setUserStep] = useState(0)
-  const [userSelectSuccess, setUserSelectSuccess] = useState(-1)
 
-  useEffect(() => {
-    if (isRun && selectedBall <= path.length - 1) {
-      setTimeout(() => {
-        setSelectedBall(prev => prev + 1)
-      }, 1000)
-    }
-    if (selectedBall > path.length - 1) {
-      setSelectedBall(-1)
-      setIsStepUser(true)
-    }
-  }, [isRun, selectedBall])
+  const [showInstruction, setShowInstruction] = useState(true)
 
   const run = () => {
-    setIsRun(true)
+    setShowInstruction(false)
   }
 
-  const clickOnBall = (i: number) => {
-    if (!isStepUser) return
-    if (path[userStep] === i) {
-      setUserSelectSuccess(i)
-      setUserStep(prev => prev++)
-    }
-    console.log(i)
-  }
   return <div className={styled.container}>
-    {isRun ?
-      <GreedBalls userSelectError={-1} userSelectSuccess={userSelectSuccess} clickOnBall={clickOnBall}
-                  isStepUser={isStepUser} selectedBall={path[selectedBall]}/> :
-      <button onClick={run} className={'btn btn-success'}>начать</button>}
+
+    {showInstruction ? <Instruction startTest={run} instruction={instruction} skill={skill} imgName={imgName} /> :
+      <ConsistentBallsRun />}
   </div>
 }

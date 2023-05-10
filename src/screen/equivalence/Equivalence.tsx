@@ -1,61 +1,43 @@
 import styles from './equivalence.module.css'
 import {KeyboardEvent, useEffect, useRef, useState} from "react";
 import {EquivalenceItem} from "../../components/equivalence/EquivalenceItem";
+import {Instruction} from "../../components/instruction/Instruction";
+import {EquivalenceRun} from "./EquivalenceRun";
 
-const items = [
-  {color: 'blue', text: 'красный', isRight: false},
-  {color: 'green', text: 'зеленый', isRight: true},
-  {color: 'gray', text: 'голубой', isRight: false},
-  {color: 'black', text: 'желтый', isRight: false},
-  {color: 'red', text: 'красный', isRight: true},
-  {color: 'black', text: 'фиолетовый', isRight: false},
-  {color: 'red', text: 'серый', isRight: false},
-  {color: 'black', text: 'черный', isRight: true},
-  {color: 'orange', text: 'оранжевый', isRight: true},
-  {color: 'black', text: 'розовый', isRight: false},
-  {color: 'yellow', text: 'желтый', isRight: true},
-  {color: 'black', text: 'коричневый', isRight: false},
-  {color: 'gray', text: 'черный', isRight: false},
+const instruction = `В центре экрана появится название цвета.
+Нажимайте на пробел, когда название цвета совпадает с цветом его букв (например: слово "синий" написано синими буквами).
+Если цвет букв и название не совпадают (например, слово "синий" написано красными буквами), ничего не нужно делать.
+
+Нажмите на "НАЧАТЬ", когда будете готовы.`
+
+const skill = [
+  'Время реакции',
+  'Зрительное восприятие',
+  'Ингибиция',
+  'Мониторинг',
+  'Память на имена',
+  'Скорость обработки информации',
 ]
 
+const imgName = 'speed.jpg'
+
+
 export const Equivalence = () => {
-  const divReference = useRef(null);
-  const [isRun, setIsRun] = useState(false)
-  const [currentIdx, setCurrentIdx] = useState(-1)
-  const [isError, setIsError] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
+  const [showInstruction, setShowInstruction] = useState(true)
 
-  useEffect(() => {
-    if (isRun && currentIdx < items.length - 1) {
-      console.log(currentIdx)
-      setTimeout(() => {
-        setIsError(false)
-        setIsSuccess(false)
-        setCurrentIdx(prev => prev + 1)
-      }, 1000, currentIdx)
-    }
-  }, [currentIdx])
-
-  const run = () => {
-    // @ts-ignore
-    divReference?.current?.focus()
-    setCurrentIdx(prev => prev + 1)
-    setIsRun(true)
+  const startTest = () => {
+    setShowInstruction(false)
   }
 
-  const handlerKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
-    if (e.code === 'Space') {
-      if (items[currentIdx].isRight) {
-        setIsSuccess(true)
-      } else {
-        setIsError(true)
-      }
+  return <>
+    {
+      showInstruction ? <Instruction
+          imgName={imgName}
+          skill={skill}
+          instruction={instruction}
+          startTest={startTest}
+        /> :
+        <EquivalenceRun/>
     }
-  }
-
-  return <div ref={divReference} className={styles.container} onKeyDown={handlerKeyDown} tabIndex={1} autoFocus={true}>
-    {isRun ? <EquivalenceItem color={items[currentIdx].color} text={items[currentIdx].text} showError={isError}
-                              showSuccess={isSuccess}/> :
-      <button className={'btn btn-success'} onClick={run}>начать</button>}
-  </div>
+  </>
 }

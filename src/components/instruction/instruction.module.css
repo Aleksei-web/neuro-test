@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 0 20px -8px #000;
+}
+
+.sectionInfo {
+    width: 50%;
+    height: 100%;
+}
+
+.title {
+    font-size: 32px;
+    color: #007cd5;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.sectionInfo p {
+    text-align: left;
+    margin-left: 20px;
+}
+/*background-image: url("./speed.jpg");*/
+
+.sectionImg {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+}
+
+.btnStart {
+    padding: 8px 40px;
+    border-radius: 8px;
+    background-color: #0a53be;
+    color: white;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    margin: 100% auto;
+}

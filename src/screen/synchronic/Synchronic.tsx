@@ -1,31 +1,34 @@
 import styled from './synchronic.module.css'
 import {useState, MouseEvent} from "react";
-import ErrorIcon from '@mui/icons-material/Error';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import {Instruction} from "../../components/instruction/Instruction";
+import {SynchronicRun} from "./SynchronicRun";
+
+const instruction = `Наведите курсор на шар и постарайтесь удерживать его в центре.
+
+Нажмите на "НАЧАТЬ", когда будете готовы.`
+
+const skill = [
+  'Зрительно-моторная координация',
+  'Когнитивная гибкость',
+  'Мониторинг',
+  'Скорость обработки информации'
+]
+
+const imgName = 'speed.jpg'
 
 export const Synchronic = () => {
-  const [correct, setCorrect] = useState(true)
+  const [showInstruction, setShowInstruction] = useState(true)
 
-  const mouseOverCircle = (e: MouseEvent<HTMLDivElement>) => {
-    const node = e.target as HTMLElement
-    const {left, top} = node.getBoundingClientRect()
-    const x = e.clientX - left - 25;
-    const y = e.clientY - top - 25;
-    if (Math.abs(x) > 4 || Math.abs(y) > 4) {
-      setCorrect(false)
-    } else {
-      setCorrect(true)
-    }
-    console.log(x, y)
+  const startTest = () => {
+    setShowInstruction(false)
   }
 
   return <div className={styled.container}>
-    <div className={styled.square}>
-      <div className={styled.squareSmall}></div>
-      <div onMouseMove={mouseOverCircle} className={`${styled.circle}`}>
-        {correct ? <CheckCircleIcon sx={{fontSize: 50, color: 'green'}}/> :
-          <ErrorIcon sx={{fontSize: 50, color: 'red'}}/>}
-      </div>
-    </div>
+    {showInstruction ? <Instruction
+      imgName={imgName}
+      skill={skill}
+      instruction={instruction}
+      startTest={startTest}
+    /> : <SynchronicRun />}
   </div>
 }

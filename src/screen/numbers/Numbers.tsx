@@ -2,52 +2,37 @@ import styles from './numbers.module.css'
 import {NumberBig} from "../../components/numbers/NumberBig";
 import {NumberSmall} from "../../components/numbers/NumberSmall";
 import {useState} from "react";
+import {NumbersRun} from "./NumbersRun";
+import {Instruction} from "../../components/instruction/Instruction";
 
-type Direction = 'row' | 'row-reverse'
 
-const arrayNumbers = [
-  [4, 2, 9, 1, 3, 1, 8, 5, 8, 0],
-  [8, 0, 6, 7, 4, 5, 0, 1, 3, 9]
+const instruction = `Нажмите на фигуру большего размера так быстро, как только можете, не обращая внимания на числа.
+
+Нажмите на "НАЧАТЬ", когда будете готовы.`
+
+const skill = [
+  'Время реакции',
+  'Ингибиция',
+  'Когнитивная гибкость',
+  'Мониторинг',
+  'Скорость обработки информации'
 ]
 
+const imgName = 'numbers.jpg'
+
+
 export const Numbers = () => {
-  const [direction, setDirection] = useState<Direction>('row')
-  const [contentSmall, setContentSmall] = useState(0)
-  const [contentBig, setContentBig] = useState(1)
-  const [errorAnswer, setErrorAnswer] = useState(false)
-  const [rightAnswer, setRightErrorAnswer] = useState(false)
+  const [showInstruction, setShowInstruction] = useState(true)
 
-  const changeContent = () => {
-    const idx = Math.floor(Math.random() * arrayNumbers[0].length)
-    setContentSmall(arrayNumbers[0][idx])
-    setContentBig(arrayNumbers[1][idx])
+  const startTest = () => {
+    setShowInstruction(false)
   }
 
-  const randomDirection = () => {
-    if (Math.random() <= 0.3) {
-      return;
+  return <>
+    {
+      showInstruction ?
+      <Instruction imgName={imgName} instruction={instruction} skill={skill} startTest={startTest}/> :
+      <NumbersRun/>
     }
-
-    if (direction === 'row') {
-      setDirection('row-reverse')
-    } else {
-      setDirection('row')
-    }
-
-  }
-
-  const handleClick = (isCorrectAnswer: boolean) => {
-    isCorrectAnswer ? setRightErrorAnswer(true) : setErrorAnswer(true)
-    setTimeout(() => {
-      setRightErrorAnswer(false)
-      setErrorAnswer(false)
-      randomDirection()
-      changeContent()
-    }, 500)
-  }
-
-  return <div className={styles.container} style={{flexDirection: direction}}>
-    <NumberSmall showIcon={errorAnswer} content={contentSmall} handleClick={() => handleClick(false)}/>
-    <NumberBig showIcon={rightAnswer} content={contentBig} handleClick={() => handleClick(true)}/>
-  </div>
+  </>
 }
