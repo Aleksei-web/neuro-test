@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.square {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 25px;
+    width: 400px;
+    height: 400px;
+    position: relative;
+}
+
+.squareSmall {
+    border: 1px solid black;
+    width: 300px;
+    height: 300px;
+}
+
+.circle {
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    position: absolute;
+    border-radius: 50%;
+    left: 0;
+    top: 0;
+    animation-name: runCircle;
+    animation-duration: 45s;
+    animation-timing-function: linear;
+}
+
+@keyframes runCircle {
+    from {
+        left: 0;
+        top: 0;
+    }
+    25% {
+        top: 350px;
+        left: 0;
+    }
+    50% {
+        top: 350px;
+        left: 350px;
+    }
+    75% {
+        left: 350px;
+        top: 0;
+    }
+    to {
+        left: 0;
+        top: 0;
+    }
+}
+
+.circle.correct {
+    background-color: green;
+}
+
+.circle.notCorrect {
+    background-color: red;
+}

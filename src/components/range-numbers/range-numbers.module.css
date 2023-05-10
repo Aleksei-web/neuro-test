@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.center {
+    background-color: #e7e9eb;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.oneStep {
+    width: 200px;
+    height: 200px;
+    background-color: #e7e9eb;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+}
+
+
+.item {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    background-color: #e7e9eb;
+    border-radius: 50%;
+}
+
+.item span {
+    font-size: 24px;
+}
+

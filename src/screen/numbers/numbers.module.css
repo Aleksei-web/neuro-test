@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.circle {
+    position: relative;
+    background-color: #e7e9eb;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 62px;
+    margin: 40px;
+    cursor: pointer;
+}
+
+.iconSuccess {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+}
+
+.iconError {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%, -50%);
+    color: red;
+}
+
+.big {
+    height: 320px;
+    width: 320px;
+    font-size: 84px;
+    border-radius: 50%;
+}
