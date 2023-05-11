@@ -8,6 +8,7 @@ import {Synchronic} from "./screen/synchronic/Synchronic";
 import {Equivalence} from "./screen/equivalence/Equivalence";
 import {CoordinationBall} from "./screen/coordination-ball/CoordinationBall";
 import {ConsistentBalls} from "./screen/consistent-balls/ConsistentBalls";
+import {Recognize} from "./screen/recognize/Recognize";
 
 const testList = [
   {name: 'скорость', type: 'Speed', idx: 0},
@@ -18,6 +19,7 @@ const testList = [
   {name: 'эквивалентность', type: 'Equivalence', idx: 5},
   {name: 'координация', type: 'CoordinationBall', idx: 6},
   {name: 'концентарция', type: 'ConsistentBalls', idx: 7},
+  {name: 'распознование', type: 'Recognize', idx: 8},
 ]
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
         return <CoordinationBall/>
       case 7:
         return <ConsistentBalls/>
+      case 8:
+        return <Recognize/>
     }
   }
 

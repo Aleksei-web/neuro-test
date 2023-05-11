@@ -1,0 +1,38 @@
+.container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    height: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementContainer {
+    margin: 20px auto;
+    display: flex;
+    width: 250px;
+    flex-wrap: wrap;
+    height: 90px;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.styledIconResult {
+    position: absolute;
+    font-size: 45px;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, 0px);
+    color: green;
+}
+
+.iconError {
+    color: red !important;
+}
+
+.iconPicture {
+    font-size: 64px !important;
+    color: #2a54f1;
+}
