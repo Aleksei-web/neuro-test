@@ -15,6 +15,7 @@ import { Grade } from "../screen/grade/Grade";
 
 import "../App.css";
 import { Grade2 } from "../screen/grade2/Grade2";
+import { MultipleTask } from "../screen/multiple-task/MultipleTask";
 
 const testList = [
   { name: "скорость", type: "Speed", idx: 0 },
@@ -31,6 +32,7 @@ const testList = [
   { name: "программирование", type: "Programming", idx: 11 },
   { name: "оценка", type: "Grade", idx: 12 },
   { name: "оценка2", type: "Grade2", idx: 13 },
+  { name: "многозадачность", type: "MultipleTask", idx: 14 },
 ];
 
 export const AllTestPage = () => {
@@ -72,6 +74,8 @@ export const AllTestPage = () => {
         return <Grade />;
       case 13:
         return <Grade2 />;
+      case 14:
+        return <MultipleTask />;
     }
   };
   return (

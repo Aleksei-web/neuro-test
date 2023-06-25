@@ -1,0 +1,80 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle {
+    z-index: 1000;
+    height: 50px;
+    width: 50px;
+    background-color: gray;
+    cursor: pointer;
+    position: absolute;
+    border-radius: 50%;
+    top: 250px;
+    left: 40px;
+    animation-name: runCircle;
+    animation-duration: 60s;
+    animation-timing-function: linear;
+}
+
+@keyframes runCircle {
+    from {
+        left: 40px;
+        top: 250px;
+    }
+    25% {
+        top: 350px;
+        left: 350px;
+    }
+    50% {
+        top: 50px;
+        left: 60px;
+    }
+    75% {
+        left: 350px;
+        top: 120px;
+    }
+    to {
+        left: 90px;
+        top: 60px;
+    }
+}
+
+.circle.correct {
+    background-color: green;
+}
+
+.circle.notCorrect {
+    background-color: red;
+}
+
+.circle:hover {
+    background-color: green;
+}
+
+.textBox {
+    height: 60px;
+    width: 220px;
+    border-radius: 4px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-size: 28px;
+}
+
+.success {
+    border: 3px solid green;
+}
+
+.error {
+    border: 3px solid red;
+}
