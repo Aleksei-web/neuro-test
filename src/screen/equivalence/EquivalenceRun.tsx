@@ -1,26 +1,25 @@
 import styles from './equivalence.module.css'
-import {KeyboardEvent, useEffect, useRef, useState} from "react";
-import {EquivalenceItem} from "../../components/equivalence/EquivalenceItem";
+import { KeyboardEvent, useEffect, useRef, useState } from 'react'
+import { EquivalenceItem } from '../../components/equivalence/EquivalenceItem'
 
 const items = [
-  {color: 'blue', text: 'красный', isRight: false},
-  {color: 'green', text: 'зеленый', isRight: true},
-  {color: 'gray', text: 'голубой', isRight: false},
-  {color: 'black', text: 'желтый', isRight: false},
-  {color: 'red', text: 'красный', isRight: true},
-  {color: 'black', text: 'фиолетовый', isRight: false},
-  {color: 'red', text: 'серый', isRight: false},
-  {color: 'black', text: 'черный', isRight: true},
-  {color: 'orange', text: 'оранжевый', isRight: true},
-  {color: 'black', text: 'розовый', isRight: false},
-  {color: 'yellow', text: 'желтый', isRight: true},
-  {color: 'black', text: 'коричневый', isRight: false},
-  {color: 'gray', text: 'черный', isRight: false},
+  { color: 'blue', text: 'красный', isRight: false },
+  { color: 'green', text: 'зеленый', isRight: true },
+  { color: 'gray', text: 'голубой', isRight: false },
+  { color: 'black', text: 'желтый', isRight: false },
+  { color: 'red', text: 'красный', isRight: true },
+  { color: 'black', text: 'фиолетовый', isRight: false },
+  { color: 'red', text: 'серый', isRight: false },
+  { color: 'black', text: 'черный', isRight: true },
+  { color: 'orange', text: 'оранжевый', isRight: true },
+  { color: 'black', text: 'розовый', isRight: false },
+  { color: 'yellow', text: 'желтый', isRight: true },
+  { color: 'black', text: 'коричневый', isRight: false },
+  { color: 'gray', text: 'черный', isRight: false }
 ]
 
-
 export const EquivalenceRun = () => {
-  const divReference = useRef(null);
+  const divReference = useRef(null)
   const [isRun, setIsRun] = useState(false)
   const [currentIdx, setCurrentIdx] = useState(0)
   const [isError, setIsError] = useState(false)
@@ -43,6 +42,7 @@ export const EquivalenceRun = () => {
   }, [])
 
   const run = () => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     divReference?.current?.focus()
     setCurrentIdx(prev => prev + 1)

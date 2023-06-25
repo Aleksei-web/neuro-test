@@ -1,10 +1,6 @@
-import styles from './numbers.module.css'
-import {NumberBig} from "../../components/numbers/NumberBig";
-import {NumberSmall} from "../../components/numbers/NumberSmall";
-import {useState} from "react";
-import {NumbersRun} from "./NumbersRun";
-import {Instruction} from "../../components/instruction/Instruction";
-
+import { useState } from 'react'
+import { NumbersRun } from './NumbersRun'
+import { Instruction } from '../../components/instruction/Instruction'
 
 const instruction = `Нажмите на фигуру большего размера так быстро, как только можете, не обращая внимания на числа.
 
@@ -20,7 +16,6 @@ const skill = [
 
 const imgName = 'numbers.jpg'
 
-
 export const Numbers = () => {
   const [showInstruction, setShowInstruction] = useState(true)
 
@@ -30,9 +25,11 @@ export const Numbers = () => {
 
   return <>
     {
-      showInstruction ?
-      <Instruction imgName={imgName} instruction={instruction} skill={skill} startTest={startTest}/> :
-      <NumbersRun/>
+      showInstruction
+        // eslint-disable-next-line no-mixed-spaces-and-tabs
+        ? <Instruction imgName={imgName} instruction={instruction} skill={skill} startTest={startTest}/>
+        // eslint-disable-next-line no-mixed-spaces-and-tabs
+        : <NumbersRun/>
     }
   </>
 }

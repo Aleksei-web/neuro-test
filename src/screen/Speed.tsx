@@ -1,6 +1,6 @@
-import {Progress} from "../components/Progress";
-import {useEffect, useState} from "react";
-import {Instruction} from "../components/instruction/Instruction";
+import { Progress } from '../components/Progress'
+import { useEffect, useState } from 'react'
+import { Instruction } from '../components/instruction/Instruction'
 
 const instruction = `Вы увидите на экране прямоугольник.
               Нажимайте на него так быстро, как только это возможно, в течении 10 секунд.
@@ -38,13 +38,14 @@ export const Speed = () => {
     setResult(Math.round((countClick / (60 - timer)) * 60))
   }
   return <div className="speed-screen">
-    {showInstruction ? <Instruction
+    {showInstruction
+      ? <Instruction
         imgName={imgName}
         skill={skill}
         instruction={instruction}
         startTest={startTest}
-      /> :
-      <div className='speed-container'>
+      />
+      : <div className='speed-container'>
         <div>
           <div className='timer'>{timer}</div>
           <Progress width={result / 5}/>

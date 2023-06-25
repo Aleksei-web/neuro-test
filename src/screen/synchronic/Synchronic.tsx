@@ -1,7 +1,7 @@
 import styled from './synchronic.module.css'
-import {useState, MouseEvent} from "react";
-import {Instruction} from "../../components/instruction/Instruction";
-import {SynchronicRun} from "./SynchronicRun";
+import { useState } from 'react'
+import { Instruction } from '../../components/instruction/Instruction'
+import { SynchronicRun } from './SynchronicRun'
 
 const instruction = `Наведите курсор на шар и постарайтесь удерживать его в центре.
 
@@ -24,11 +24,13 @@ export const Synchronic = () => {
   }
 
   return <div className={styled.container}>
-    {showInstruction ? <Instruction
-      imgName={imgName}
-      skill={skill}
-      instruction={instruction}
-      startTest={startTest}
-    /> : <SynchronicRun />}
+    {showInstruction
+      ? <Instruction
+        imgName={imgName}
+        skill={skill}
+        instruction={instruction}
+        startTest={startTest}
+      />
+      : <SynchronicRun/>}
   </div>
 }

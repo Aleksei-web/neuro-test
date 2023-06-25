@@ -1,0 +1,28 @@
+.actionContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.actionItem {
+    background-color: black;
+    border: none;
+    height: 108px;
+    font-size: 24px;
+    max-width: 264px;
+    color: white;
+    font-weight: 700;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.icon {
+    font-size: 120px !important;
+    color: #0a58ca;
+}
+
+.containerIcon {
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

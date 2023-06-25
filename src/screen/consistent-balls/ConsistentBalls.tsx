@@ -1,7 +1,7 @@
 import styled from './consistent-balls.module.css'
-import {ConsistentBallsRun} from "./ConsistentBallsRun";
-import {useState} from "react";
-import {Instruction} from "../../components/instruction/Instruction";
+import { ConsistentBallsRun } from './ConsistentBallsRun'
+import { useState } from 'react'
+import { Instruction } from '../../components/instruction/Instruction'
 
 const instruction = `Вы увидите, как в определённом порядке загораются круги.
 Внимательно наблюдайте за ними и запомните порядок, чтобы воспроизвести его, когда придёт ваша очередь.
@@ -22,7 +22,6 @@ const skill = [
 const imgName = 'consistent.jpg'
 
 export const ConsistentBalls = () => {
-
   const [showInstruction, setShowInstruction] = useState(true)
 
   const run = () => {
@@ -31,7 +30,8 @@ export const ConsistentBalls = () => {
 
   return <div className={styled.container}>
 
-    {showInstruction ? <Instruction startTest={run} instruction={instruction} skill={skill} imgName={imgName} /> :
-      <ConsistentBallsRun />}
+    {showInstruction
+      ? <Instruction startTest={run} instruction={instruction} skill={skill} imgName={imgName}/>
+      : <ConsistentBallsRun/>}
   </div>
 }

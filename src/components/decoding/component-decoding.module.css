@@ -1,0 +1,38 @@
+.letter {
+    background-color: blue;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.success {
+    background-color: green;
+}
+
+.error {
+    background-color: red;
+}
+
+.letterContainer {
+    min-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.letterGrid {
+    width: 250px;
+    height: 200px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.objectIcon {
+    color: #3f08e9;
+    font-size: 120px !important;
+}

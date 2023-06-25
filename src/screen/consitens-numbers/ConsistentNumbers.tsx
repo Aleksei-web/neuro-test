@@ -1,7 +1,7 @@
 import styles from './consistent-numbers.module.css'
-import {ConsistentsNumbersRun} from "./ConsistentsNumbersRun";
-import {useState} from "react";
-import {Instruction} from "../../components/instruction/Instruction";
+import { ConsistentsNumbersRun } from './ConsistentsNumbersRun'
+import { useState } from 'react'
+import { Instruction } from '../../components/instruction/Instruction'
 
 const instruction = `Вам будет показана серия цифр.
 Внимательно изучите и запомните их для того, чтобы затем воспроизвести.
@@ -24,13 +24,14 @@ export const ConsistentNumbers = () => {
   }
 
   return <div className={styles.container}>
-    {showInstruction ? <Instruction
-      imgName={imgName}
-      skill={skill}
-      instruction={instruction}
-      startTest={startTest}/> : <ConsistentsNumbersRun/>
+    {showInstruction
+      ? <Instruction
+        imgName={imgName}
+        skill={skill}
+        instruction={instruction}
+        startTest={startTest}/>
+      : <ConsistentsNumbersRun/>
 
     }
   </div>
-
 }

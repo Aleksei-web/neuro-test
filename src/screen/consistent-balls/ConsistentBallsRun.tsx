@@ -1,7 +1,7 @@
-import {useEffect, useState} from "react";
-import styled from "./consistent-balls.module.css";
-import {GreedBallsPlay} from "./GreedBallsPlay";
-import {GreedBallsSelect} from "./GreedBallsSelect";
+import { useState } from 'react'
+import styled from './consistent-balls.module.css'
+import { GreedBallsPlay } from './GreedBallsPlay'
+import { GreedBallsSelect } from './GreedBallsSelect'
 
 const path = [1, 5, 3, 9]
 
@@ -9,65 +9,65 @@ const arraySome = [
   {
 
     items: [
-      {x: 80, y: 50},
-      {x: 120, y: 220},
-      {x: 90, y: 400},
-      {x: 280, y: 280},
-      {x: 480, y: 200},
-      {x: 95, y: 550},
-      {x: 158, y: 786},
-      {x: 280, y: 500},
-      {x: 430, y: 500},
-      {x: 430, y: 800},
+      { x: 80, y: 50 },
+      { x: 120, y: 220 },
+      { x: 90, y: 400 },
+      { x: 280, y: 280 },
+      { x: 480, y: 200 },
+      { x: 95, y: 550 },
+      { x: 158, y: 786 },
+      { x: 280, y: 500 },
+      { x: 430, y: 500 },
+      { x: 430, y: 800 }
     ],
     path: [3]
   },
   {
 
     items: [
-      {x: 80, y: 50},
-      {x: 120, y: 220},
-      {x: 90, y: 400},
-      {x: 280, y: 280},
-      {x: 480, y: 200},
-      {x: 95, y: 550},
-      {x: 158, y: 786},
-      {x: 280, y: 500},
-      {x: 430, y: 500},
-      {x: 430, y: 800},
+      { x: 80, y: 50 },
+      { x: 120, y: 220 },
+      { x: 90, y: 400 },
+      { x: 280, y: 280 },
+      { x: 480, y: 200 },
+      { x: 95, y: 550 },
+      { x: 158, y: 786 },
+      { x: 280, y: 500 },
+      { x: 430, y: 500 },
+      { x: 430, y: 800 }
     ],
     path: [3, 9]
   },
   {
     items: [
-      {x: 80, y: 50},
-      {x: 120, y: 220},
-      {x: 90, y: 400},
-      {x: 280, y: 280},
-      {x: 480, y: 200},
-      {x: 95, y: 550},
-      {x: 158, y: 786},
-      {x: 280, y: 500},
-      {x: 430, y: 500},
-      {x: 430, y: 800},
+      { x: 80, y: 50 },
+      { x: 120, y: 220 },
+      { x: 90, y: 400 },
+      { x: 280, y: 280 },
+      { x: 480, y: 200 },
+      { x: 95, y: 550 },
+      { x: 158, y: 786 },
+      { x: 280, y: 500 },
+      { x: 430, y: 500 },
+      { x: 430, y: 800 }
     ],
     path: [5, 8, 2]
   },
   {
     items: [
-      {x: 80, y: 50},
-      {x: 120, y: 220},
-      {x: 90, y: 400},
-      {x: 280, y: 280},
-      {x: 480, y: 200},
-      {x: 95, y: 550},
-      {x: 158, y: 786},
-      {x: 280, y: 500},
-      {x: 430, y: 500},
-      {x: 430, y: 800},
+      { x: 80, y: 50 },
+      { x: 120, y: 220 },
+      { x: 90, y: 400 },
+      { x: 280, y: 280 },
+      { x: 480, y: 200 },
+      { x: 95, y: 550 },
+      { x: 158, y: 786 },
+      { x: 280, y: 500 },
+      { x: 430, y: 500 },
+      { x: 430, y: 800 }
     ],
     path: [5, 1, 2, 9]
-  },
+  }
 ]
 
 export const ConsistentBallsRun = () => {
@@ -98,7 +98,6 @@ export const ConsistentBallsRun = () => {
           setPath(arraySome[idx + 1].path)
           setIsStepUser(false)
         }, 1000)
-
       }
     } else {
       setColor('red')
@@ -108,9 +107,9 @@ export const ConsistentBallsRun = () => {
   }
 
   return <div className={styled.container}>
-    {isStepUser ?
-      <GreedBallsSelect balls={balls} clickBall={clickBall}
-                        selectedColorBall={color}/> :
-      <GreedBallsPlay path={path} balls={balls} done={done}/>}
+    {isStepUser
+      ? <GreedBallsSelect balls={balls} clickBall={clickBall}
+                          selectedColorBall={color}/>
+      : <GreedBallsPlay path={path} balls={balls} done={done}/>}
   </div>
 }

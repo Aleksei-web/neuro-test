@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import styled from "./consistent-balls.module.css";
+import { useState } from 'react'
+import styled from './consistent-balls.module.css'
 
 interface IGreedBallsSelect {
   balls: { x: number; y: number; }[]
@@ -7,16 +7,15 @@ interface IGreedBallsSelect {
   selectedColorBall: 'green' | 'red'
 }
 
-
-export const GreedBallsSelect = ({balls, clickBall, selectedColorBall}: IGreedBallsSelect) => {
+export const GreedBallsSelect = ({ balls, clickBall, selectedColorBall }: IGreedBallsSelect) => {
   const [selectedBallIdx, setSelectedBallIdx] = useState(-1)
 
   const click = (i: number) => {
     setSelectedBallIdx(i)
-      clickBall(i)
+    clickBall(i)
   }
 
-  return <div style={{height: '100%', width: '100%', position: 'relative'}}>
+  return <div style={{ height: '100%', width: '100%', position: 'relative' }}>
     <h3>Ваша очередь</h3>
     {
       balls.map((el, i) => (<div

@@ -1,6 +1,5 @@
 import styled from './consistent-balls.module.css'
-import {useEffect, useState} from "react";
-
+import { useEffect, useState } from 'react'
 
 interface IGreedBalls {
   balls: { x: number; y: number; }[]
@@ -8,7 +7,7 @@ interface IGreedBalls {
   done: () => void
 }
 
-export const GreedBallsPlay = ({balls, path, done}: IGreedBalls) => {
+export const GreedBallsPlay = ({ balls, path, done }: IGreedBalls) => {
   const [selectedBallIdx, setSelectedBallIdx] = useState(-1)
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export const GreedBallsPlay = ({balls, path, done}: IGreedBalls) => {
     }, 1000)
   }, [selectedBallIdx])
 
-  return <div style={{height: '100%', width: '100%', position: 'relative'}}>
+  return <div style={{ height: '100%', width: '100%', position: 'relative' }}>
     <h3>очередь компьютера</h3>
     {
       balls.map((el, i) => (<div

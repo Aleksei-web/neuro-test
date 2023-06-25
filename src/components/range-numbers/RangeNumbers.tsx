@@ -1,5 +1,5 @@
 import styles from './range-numbers.module.css'
-import {useState} from "react";
+import { useState } from 'react'
 import error from './error.mp3'
 import success from './success.mp3'
 
@@ -10,7 +10,7 @@ interface IRangeNumbers {
   endOfList: () => void
 }
 
-export const RangeNumbers = ({numbersArray, endOfList}: IRangeNumbers) => {
+export const RangeNumbers = ({ numbersArray, endOfList }: IRangeNumbers) => {
   const [currentNumber, setCurrentNumber] = useState(numbersArray[0])
   const [currentIdx, setCurrentIdx] = useState(0)
   const [errorIdx, setErrorIdx] = useState<null | number>(null)
@@ -34,7 +34,6 @@ export const RangeNumbers = ({numbersArray, endOfList}: IRangeNumbers) => {
     if (currentIdx === numbersArray.length - 1) {
       playSuccess()
       endOfList()
-      return;
     } else {
       playSuccess()
       setSuccessNumber(number)
@@ -52,13 +51,13 @@ export const RangeNumbers = ({numbersArray, endOfList}: IRangeNumbers) => {
       key={i}
       onClick={() => clickNumber(el)}
       className={styles.item} style={{
-      transform: `rotate(${(i) * (-360 / 10)}deg)`,
-      top: 200 * Math.sin((Math.PI * 2 / 10) * i) + height + 'px',
-      left: 200 * Math.cos((Math.PI * 2 / 10) * i) + width + 'px',
-      backgroundColor: `${el === errorIdx ? 'red' : '#e7e9eb'}`,
-      border: `${el === successNumber ? 'solid 5px green' : 'none'}`
-    }}>
-      <span style={{transform: `rotate(${(i) * (360 / 10)}deg)`}}>
+        transform: `rotate(${(i) * (-360 / 10)}deg)`,
+        top: 200 * Math.sin((Math.PI * 2 / 10) * i) + height + 'px',
+        left: 200 * Math.cos((Math.PI * 2 / 10) * i) + width + 'px',
+        backgroundColor: `${el === errorIdx ? 'red' : '#e7e9eb'}`,
+        border: `${el === successNumber ? 'solid 5px green' : 'none'}`
+      }}>
+      <span style={{ transform: `rotate(${(i) * (360 / 10)}deg)` }}>
         {el}
       </span>
     </div>)}

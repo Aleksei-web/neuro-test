@@ -1,6 +1,6 @@
-import {MouseEvent, useState} from "react";
-import {Instruction} from "../../components/instruction/Instruction";
-import {CoordinationRun} from "./CoordinationRun";
+import { useState } from 'react'
+import { Instruction } from '../../components/instruction/Instruction'
+import { CoordinationRun } from './CoordinationRun'
 
 const instruction = `Вы увидите шар, который будет перемещаться по экрану.
 Следуйте за ним с помощью курсора и постарайтесь с точностью удерживать курсор в центре шара.
@@ -8,7 +8,7 @@ const instruction = `Вы увидите шар, который будет пе�
 Нажмите на "НАЧАТЬ", когда будете готовы.`
 
 const skill = [
-  'Зрительно-моторная координация',
+  'Зрительно-моторная координация'
 ]
 
 const imgName = 'speed.jpg'
@@ -21,13 +21,14 @@ export const CoordinationBall = () => {
   }
 
   return <>
-    {showInstruction ? <Instruction
-      imgName={imgName}
-      skill={skill}
-      instruction={instruction}
-      startTest={startTest}
-    /> :
-      <CoordinationRun />
+    {showInstruction
+      ? <Instruction
+        imgName={imgName}
+        skill={skill}
+        instruction={instruction}
+        startTest={startTest}
+      />
+      : <CoordinationRun/>
     }
   </>
-};
+}

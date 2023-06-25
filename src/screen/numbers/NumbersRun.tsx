@@ -1,7 +1,7 @@
-import {useState} from "react";
-import styles from "./numbers.module.css";
-import {NumberSmall} from "../../components/numbers/NumberSmall";
-import {NumberBig} from "../../components/numbers/NumberBig";
+import { useState } from 'react'
+import styles from './numbers.module.css'
+import { NumberSmall } from '../../components/numbers/NumberSmall'
+import { NumberBig } from '../../components/numbers/NumberBig'
 
 type Direction = 'row' | 'row-reverse'
 
@@ -25,7 +25,7 @@ export const NumbersRun = () => {
 
   const randomDirection = () => {
     if (Math.random() <= 0.3) {
-      return;
+      return
     }
 
     if (direction === 'row') {
@@ -33,7 +33,6 @@ export const NumbersRun = () => {
     } else {
       setDirection('row')
     }
-
   }
 
   const handleClick = (isCorrectAnswer: boolean) => {
@@ -46,7 +45,7 @@ export const NumbersRun = () => {
     }, 500)
   }
 
-  return <div className={styles.container} style={{flexDirection: direction}}>
+  return <div className={styles.container} style={{ flexDirection: direction }}>
     <NumberSmall showIcon={errorAnswer} content={contentSmall} handleClick={() => handleClick(false)}/>
     <NumberBig showIcon={rightAnswer} content={contentBig} handleClick={() => handleClick(true)}/>
   </div>

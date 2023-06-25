@@ -1,8 +1,7 @@
 import styled from './recognize.module.css'
-import {Picture} from "../../components/recognize/Picture";
-import {useState} from "react";
-import {GreedPicture} from "../../components/recognize/GreedPicture";
-
+import { Picture } from '../../components/recognize/Picture'
+import { useState } from 'react'
+import { GreedPicture } from '../../components/recognize/GreedPicture'
 
 const arrayItems = [
   {
@@ -11,7 +10,7 @@ const arrayItems = [
       ['balance', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'wb_iridescent', 'wb_twilight'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['balance', 'wb_incandescent', 'wb_sunny'],
+      ['balance', 'wb_incandescent', 'wb_sunny']
     ],
     idxRight: 0
   },
@@ -21,7 +20,7 @@ const arrayItems = [
       ['balance', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'wb_iridescent', 'wb_twilight'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['balance', 'wb_incandescent', 'wb_sunny'],
+      ['balance', 'wb_incandescent', 'wb_sunny']
     ],
     idxRight: 2
   },
@@ -31,7 +30,7 @@ const arrayItems = [
       ['balance', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'wb_iridescent', 'wb_twilight'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['balance', 'wb_incandescent', 'wb_sunny'],
+      ['balance', 'wb_incandescent', 'wb_sunny']
     ],
     idxRight: 1
   },
@@ -41,7 +40,7 @@ const arrayItems = [
       ['balance', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'wb_iridescent', 'wb_twilight'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['balance', 'wb_incandescent', 'wb_sunny'],
+      ['balance', 'wb_incandescent', 'wb_sunny']
     ],
     idxRight: 3
   },
@@ -51,7 +50,7 @@ const arrayItems = [
       ['balance', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'wb_incandescent', 'hourglass_empty'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['balance', 'wb_incandescent', 'wb_sunny'],
+      ['balance', 'wb_incandescent', 'wb_sunny']
     ],
     idxRight: 1
   },
@@ -61,7 +60,7 @@ const arrayItems = [
       ['extension', 'wb_incandescent', 'wb_twilight'],
       ['balance', 'flutter_dash', 'hourglass_empty'],
       ['balance', 'wb_twilight', 'wb_incandescent'],
-      ['extension', 'flutter_dash', 'hourglass_empty'],
+      ['extension', 'flutter_dash', 'hourglass_empty']
     ],
     idxRight: 3
   },
@@ -71,7 +70,7 @@ const arrayItems = [
       ['extension', 'wb_incandescent', 'wb_twilight'],
       ['hotel_class', 'flutter_dash', 'hotel_class'],
       ['hotel_class', 'hotel_class', 'hotel_class'],
-      ['extension', 'flutter_dash', 'hourglass_empty'],
+      ['extension', 'flutter_dash', 'hourglass_empty']
     ],
     idxRight: 1
   },
@@ -81,7 +80,7 @@ const arrayItems = [
       ['extension', 'wb_incandescent', 'wb_twilight'],
       ['hotel_class', 'flutter_dash', 'hotel_class'],
       ['component_exchange', 'flutter_dash', 'hotel_class'],
-      ['extension', 'component_exchange', 'hourglass_empty'],
+      ['extension', 'component_exchange', 'hourglass_empty']
     ],
     idxRight: 2
   }
@@ -96,12 +95,11 @@ export const RecognizeRun = () => {
   const [idxRight, setIdxRight] = useState(arrayItems[0].idxRight)
   const [idxQuestion, setIdxQuestion] = useState(0)
 
-
   const changeShowQuestion = () => {
     setShowQuestion(false)
   }
 
-  function clickGreedItem(i: number) {
+  function clickGreedItem (i: number) {
     if (i === idxRight) {
       setIdxSuccess(i)
     } else {
@@ -110,7 +108,7 @@ export const RecognizeRun = () => {
     setTimeout(nextQuestion, 1000)
   }
 
-  function nextQuestion() {
+  function nextQuestion () {
     console.log('next')
     if (idxQuestion === arrayItems.length - 2) {
       return
@@ -125,10 +123,11 @@ export const RecognizeRun = () => {
   }
 
   return <div className={styled.container}>
-    {showQuestion ? <Picture
+    {showQuestion
+      ? <Picture
         changeShowQuestion={changeShowQuestion}
-        icons={question}/> :
-      <GreedPicture
+        icons={question}/>
+      : <GreedPicture
         clickGreedItem={clickGreedItem}
         icons={variables}
         error={idxError}

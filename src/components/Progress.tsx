@@ -2,7 +2,7 @@ interface IProgress {
   width: number
 }
 
-export const Progress = ({width}: IProgress) => {
+export const Progress = ({ width }: IProgress) => {
   const showResult = () => {
     if (width < 20) {
       return 'старайся'
@@ -19,7 +19,7 @@ export const Progress = ({width}: IProgress) => {
       return 'самый лучший'
     }
   }
-  return <div className="progress" role="progressbar" style={{height: '30px'}}>
-    <div className="progress-bar text-bg-warning" style={{width: `${width}%`}}>{showResult()}</div>
+  return <div className="progress" role="progressbar" style={{ height: '30px' }}>
+    <div className="progress-bar text-bg-warning" style={{ width: `${width}%` }}>{showResult()}</div>
   </div>
 }

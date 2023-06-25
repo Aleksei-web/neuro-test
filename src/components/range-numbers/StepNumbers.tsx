@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react'
 import styles from './range-numbers.module.css'
 
 interface IStepNumbers {
@@ -7,7 +7,7 @@ interface IStepNumbers {
   setIsDone: () => void
 }
 
-export const StepNumbers = ({numbers, time, setIsDone}: IStepNumbers) => {
+export const StepNumbers = ({ numbers, time, setIsDone }: IStepNumbers) => {
   const [currentNumber, setCurrentNumber] = useState<null | number>(null)
   const [currentIdx, setCurrentIdx] = useState(0)
 
@@ -27,7 +27,7 @@ export const StepNumbers = ({numbers, time, setIsDone}: IStepNumbers) => {
   }
 
   return <>
-    {currentNumber === null && <div className={styles.oneStep} style={{fontSize: '24px'}}>очередь компьютера</div>}
+    {currentNumber === null && <div className={styles.oneStep} style={{ fontSize: '24px' }}>очередь компьютера</div>}
     {currentNumber !== null && <div className={styles.oneStep}>{currentNumber}</div>}
   </>
 }

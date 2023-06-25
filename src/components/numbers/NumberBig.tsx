@@ -1,7 +1,5 @@
 import styles from '../../screen/numbers/numbers.module.css'
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
-import UnpublishedOutlinedIcon from '@mui/icons-material/UnpublishedOutlined';
-import {useState} from "react";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline'
 
 interface INumberBig {
   content: number
@@ -9,8 +7,7 @@ interface INumberBig {
   showIcon: boolean
 }
 
-export const NumberBig = ({content, handleClick, showIcon}: INumberBig) => {
-
+export const NumberBig = ({ content, handleClick, showIcon }: INumberBig) => {
   return <div className={`${styles.circle} ${styles.big}`} onClick={handleClick}>
     <span>{content}</span>
     {

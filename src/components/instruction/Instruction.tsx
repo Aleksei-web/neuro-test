@@ -7,7 +7,8 @@ interface IInstruction {
   imgName: string
 }
 
-export const Instruction = ({startTest, instruction, skill, imgName}: IInstruction) => {
+export const Instruction = ({ startTest, instruction, skill, imgName }: IInstruction) => {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const logo = require(`./${imgName}`)
 
   return <>
@@ -20,7 +21,10 @@ export const Instruction = ({startTest, instruction, skill, imgName}: IInstructi
               {instruction}
             </p>
           </div>
-          <div>
+          <div style={{
+            overflowY: 'auto',
+            maxHeight: '300px'
+          }}>
             <h2 className={styled.title}>Когнитивные способности</h2>
             {skill.map(el => <p key={el}>{el}</p>)}
           </div>
@@ -29,11 +33,9 @@ export const Instruction = ({startTest, instruction, skill, imgName}: IInstructi
         <div>
         </div>
       </div>
-      <div className={styled.sectionImg} style={{backgroundImage: `url(${logo})`}}>
+      <div className={styled.sectionImg} style={{ backgroundImage: `url(${logo})` }}>
         <button onClick={startTest} className={styled.btnStart}>начать</button>
       </div>
     </div>
   </>
 }
-
-

@@ -1,10 +1,9 @@
-import {MouseEvent, useEffect, useState} from "react"
+import {MouseEvent, useEffect, useState} from 'react'
 
 interface ICircle {
   handleClick: (e: MouseEvent<SVGCircleElement>) => void
   position: { x: number; y: number }
 }
-
 
 export const Circle = ({handleClick, position}: ICircle) => {
   const [opacity, setOpacity] = useState('none')
@@ -32,12 +31,5 @@ export const Circle = ({handleClick, position}: ICircle) => {
         </clipPath>
       </defs>
     </svg>
-    {/*<svg height="100" width="100">*/}
-    {/*  <g>*/}
-    {/*    <circle onClick={(e) => handleClick(e)} cx="50" cy="50" r="50" fill="red" />*/}
-    {/*    <circle r="20" cx="20" cy="20" strokeWidth={3} fill='none' />*/}
-    {/*  </g>*/}
-
-    {/*</svg>*/}
   </div>
 }

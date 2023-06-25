@@ -1,7 +1,7 @@
-import {useState} from "react";
-import {StepNumbers} from "../../components/range-numbers/StepNumbers";
-import {RangeNumbers} from "../../components/range-numbers/RangeNumbers";
-import styles from "./consistent-numbers.module.css";
+import { useState } from 'react'
+import { StepNumbers } from '../../components/range-numbers/StepNumbers'
+import { RangeNumbers } from '../../components/range-numbers/RangeNumbers'
+import styles from './consistent-numbers.module.css'
 
 const listOfNumbers = [
   [4],
@@ -10,7 +10,7 @@ const listOfNumbers = [
   [9, 0, 3, 2],
   [1, 3, 6, 8, 5],
   [5, 2, 0, 2, 8, 4],
-  [4, 7, 2, 1, 9, 5, 6],
+  [4, 7, 2, 1, 9, 5, 6]
 ]
 
 export const ConsistentsNumbersRun = () => {
@@ -48,6 +48,6 @@ export const ConsistentsNumbersRun = () => {
 
   return <div className={styles.container}>
     {(!showEnd) && renderTest()}
-    {showEnd && <button  className={'btn btn-success'}>следующий тест</button>}
+    {showEnd && <button className={'btn btn-success'}>следующий тест</button>}
   </div>
 }

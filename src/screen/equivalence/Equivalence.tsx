@@ -1,8 +1,6 @@
-import styles from './equivalence.module.css'
-import {KeyboardEvent, useEffect, useRef, useState} from "react";
-import {EquivalenceItem} from "../../components/equivalence/EquivalenceItem";
-import {Instruction} from "../../components/instruction/Instruction";
-import {EquivalenceRun} from "./EquivalenceRun";
+import { useState } from 'react'
+import { Instruction } from '../../components/instruction/Instruction'
+import { EquivalenceRun } from './EquivalenceRun'
 
 const instruction = `В центре экрана появится название цвета.
 Нажимайте на пробел, когда название цвета совпадает с цветом его букв (например: слово "синий" написано синими буквами).
@@ -16,11 +14,10 @@ const skill = [
   'Ингибиция',
   'Мониторинг',
   'Память на имена',
-  'Скорость обработки информации',
+  'Скорость обработки информации'
 ]
 
 const imgName = 'speed.jpg'
-
 
 export const Equivalence = () => {
   const [showInstruction, setShowInstruction] = useState(true)
@@ -31,13 +28,14 @@ export const Equivalence = () => {
 
   return <>
     {
-      showInstruction ? <Instruction
+      showInstruction
+        ? <Instruction
           imgName={imgName}
           skill={skill}
           instruction={instruction}
           startTest={startTest}
-        /> :
-        <EquivalenceRun/>
+        />
+        : <EquivalenceRun/>
     }
   </>
 }
