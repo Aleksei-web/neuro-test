@@ -1,36 +1,40 @@
-import styled from './synchronic.module.css'
-import { useState } from 'react'
-import { Instruction } from '../../components/instruction/Instruction'
-import { SynchronicRun } from './SynchronicRun'
+import styled from "./synchronic.module.css";
+import { useState } from "react";
+import { Instruction } from "../../components/instruction/Instruction";
+import { SynchronicRun } from "./SynchronicRun";
 
 const instruction = `Наведите курсор на шар и постарайтесь удерживать его в центре.
 
-Нажмите на "НАЧАТЬ", когда будете готовы.`
+Нажмите на "НАЧАТЬ", когда будете готовы.`;
 
 const skill = [
-  'Зрительно-моторная координация',
-  'Когнитивная гибкость',
-  'Мониторинг',
-  'Скорость обработки информации'
-]
+  "Зрительно-моторная координация",
+  "Когнитивная гибкость",
+  "Мониторинг",
+  "Скорость обработки информации",
+];
 
-const imgName = 'speed.jpg'
+const imgName = "speed.jpg";
 
 export const Synchronic = () => {
-  const [showInstruction, setShowInstruction] = useState(true)
+  const [showInstruction, setShowInstruction] = useState(true);
 
   const startTest = () => {
-    setShowInstruction(false)
-  }
+    setShowInstruction(false);
+  };
 
-  return <div className={styled.container}>
-    {showInstruction
-      ? <Instruction
-        imgName={imgName}
-        skill={skill}
-        instruction={instruction}
-        startTest={startTest}
-      />
-      : <SynchronicRun/>}
-  </div>
-}
+  return (
+    <div className={styled.container}>
+      {showInstruction ? (
+        <Instruction
+          imgName={imgName}
+          skill={skill}
+          instruction={instruction}
+          startTest={startTest}
+        />
+      ) : (
+        <SynchronicRun />
+      )}
+    </div>
+  );
+};

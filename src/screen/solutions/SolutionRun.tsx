@@ -12,12 +12,16 @@ export const SolutionRun = () => {
   const [visiblePolygon, setVisiblePolygon] = useState(false);
   const [result, setResult] = useState({
     count: 0,
-    countClickCircle: 0,
+    countClickCircle: { whitPolygon: 0, single: 0 },
     countClickPolygon: 0,
     countClickDiv: 0,
     countSingleTask: 0,
     countDoubleTask: 0,
+    coordinateClick: [],
+    timeStart: Date.now(),
+    timeEnd: Date.now(),
   });
+  const [strResult, setStrResult] = useState("");
 
   useEffect(() => {
     if (containerRef.current) {
@@ -30,10 +34,11 @@ export const SolutionRun = () => {
 
   function handleClick(e: MouseEvent<SVGCircleElement>) {
     e.preventDefault();
+
     const x = e.clientX - e.currentTarget.getBoundingClientRect().x - RADIUS;
     const y = e.clientY - e.currentTarget.getBoundingClientRect().y - RADIUS;
 
-    setTimeout(moveCircle, 500);
+    setTimeout(moveCircle, 500, { x, y });
   }
 
   function getRandomInt(min: number, max: number) {
@@ -42,7 +47,14 @@ export const SolutionRun = () => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  const moveCircle = () => {
+  const moveCircle = (coordinate: { x: number; y: number }) => {
+    // @ts-ignore
+    setResult((prev) => ({
+      ...prev,
+      count: prev.count + 1,
+      coordinateClick: [...prev.coordinateClick, coordinate],
+      timeEnd: Date.now(),
+    }));
     let isDoubleTask = false;
     setVisiblePolygon(false);
     const x = getRandomInt(RADIUS, containerSize.height - RADIUS * 2);
@@ -52,7 +64,6 @@ export const SolutionRun = () => {
       isDoubleTask = true;
       const res = generatePolygonPosition();
       if (!isInterceptFigure([x, y], res)) {
-        console.log("isIntercept ");
         setVisiblePolygon(true);
         movePolygon(...res);
       }
@@ -67,6 +78,12 @@ export const SolutionRun = () => {
         ...prev,
         countSingleTask: prev.countSingleTask + 1,
       }));
+    }
+
+    if (result.count === 24) {
+      console.log({ result });
+      calculate();
+      return;
     }
   };
 
@@ -93,6 +110,16 @@ export const SolutionRun = () => {
     setPositionPolygon({ x, y });
   };
 
+  const increaseClickCircle = () => {
+    const countCircleClick = result.countClickCircle;
+    visiblePolygon ? countCircleClick.whitPolygon++ : countCircleClick.single++;
+
+    setResult((prev) => ({
+      ...prev,
+      countClickCircle: { ...countCircleClick },
+    }));
+  };
+
   const clickContainer = (e: MouseEvent<HTMLDivElement>) => {
     // @ts-ignore
     const tag = e.target?.tagName as "path" | "circle" | "DIV";
@@ -103,14 +130,10 @@ export const SolutionRun = () => {
         count: prev.count + 1,
         countClickPolygon: prev.countClickPolygon + 1,
       }));
-      moveCircle();
+      moveCircle({ x: 100, y: 100 });
     }
     if (tag === "circle") {
-      setResult((prev) => ({
-        ...prev,
-        count: prev.count + 1,
-        countClickCircle: prev.countClickCircle + 1,
-      }));
+      increaseClickCircle();
     }
     if (tag === "DIV") {
       setResult((prev) => ({
@@ -118,25 +141,100 @@ export const SolutionRun = () => {
         count: prev.count + 1,
         countClickPolygon: prev.countClickPolygon + 1,
       }));
-      moveCircle();
+      moveCircle({ x: 100, y: 100 });
     }
+  };
+
+  /*
+   * возвращает процент
+   */
+  const calculateLengthToCenter = (x: number, y: number) => {
+    const minProcent = 25;
+    const length = Math.pow(Math.abs(x), 2) + Math.pow(Math.abs(y), 2);
+    let proc = 100 - length / (RADIUS / 100);
+
+    if (proc < minProcent) {
+      proc = minProcent;
+    }
+
+    return ((100 / (100 - minProcent)) * (proc - minProcent)) / 100;
+  };
+
+  const calculateParamA = () => {
+    const arrData = result.coordinateClick.map(({ x, y }) =>
+      calculateLengthToCenter(x, y)
+    );
+
+    const averageData =
+      arrData.reduce((prev, current) => prev + current) / arrData.length;
+
+    return (averageData / result.count) * 100;
+  };
+
+  const calculateParamB = () => {
+    const maxSeconds = 60;
+    const minSeconds = 25;
+    let seconds = (result.timeEnd - result.timeStart) / 100;
+    if (seconds < minSeconds) {
+      seconds = minSeconds;
+    }
+
+    if (seconds > maxSeconds) {
+      seconds = maxSeconds;
+    }
+
+    return Math.ceil((100 / (maxSeconds - minSeconds)) * seconds + 25 - 100);
+  };
+
+  const calculate = () => {
+    const paramX =
+      result.countClickCircle.single /
+      ((result.countSingleTask / (result.count / 100)) * result.count);
+    const paramY =
+      result.countClickCircle.whitPolygon /
+      ((result.countDoubleTask / (result.count / 100)) * result.count);
+    const paramZ =
+      result.countClickPolygon /
+      ((result.countDoubleTask / (result.count / 100)) * result.count);
+
+    const paramA = calculateParamA();
+
+    const paramB = calculateParamB();
+
+    const calculateResult = (paramX + paramY + paramA + paramB) / 4 - paramZ;
+    setStrResult(
+      `(${paramX} + ${paramY} + ${paramA} + ${paramB}) / 4 - ${paramZ} = ${calculateResult}`
+    );
+
+    return calculateResult;
   };
 
   return (
     <>
       {" "}
-      <div
-        className="speed-container position-relative"
-        ref={containerRef}
-        style={{ border: "1px solid red" }}
-        onClick={clickContainer}
-      >
-        <div>
+      {result.count < 25 ? (
+        <div
+          className="speed-container position-relative"
+          ref={containerRef}
+          style={{ border: "1px solid red" }}
+          onClick={clickContainer}
+        >
           {result.count} из {countAsk}
+          <Circle
+            handleClick={(e) => handleClick(e)}
+            position={positionCircle}
+          />
+          {visiblePolygon && <Polygon position={positionPolygon} />}
         </div>
-        <Circle handleClick={(e) => handleClick(e)} position={positionCircle} />
-        {visiblePolygon && <Polygon position={positionPolygon} />}
-      </div>
+      ) : (
+        <div>
+          {JSON.stringify(result)}
+          <div>
+            {result.count} из {countAsk}
+            <div>итого: {strResult}</div>
+          </div>
+        </div>
+      )}
     </>
   );
 };
