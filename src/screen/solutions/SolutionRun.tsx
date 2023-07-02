@@ -127,18 +127,17 @@ export const SolutionRun = () => {
     if (tag === "path") {
       setResult((prev) => ({
         ...prev,
-        count: prev.count + 1,
         countClickPolygon: prev.countClickPolygon + 1,
       }));
       moveCircle({ x: 100, y: 100 });
     }
     if (tag === "circle") {
+      console.log("here");
       increaseClickCircle();
     }
     if (tag === "DIV") {
       setResult((prev) => ({
         ...prev,
-        count: prev.count + 1,
         countClickPolygon: prev.countClickPolygon + 1,
       }));
       moveCircle({ x: 100, y: 100 });
