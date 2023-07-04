@@ -3,6 +3,7 @@
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
 }
 
 .circle {
@@ -39,4 +40,21 @@
     width: 320px;
     font-size: 84px;
     border-radius: 50%;
+}
+
+.instructionContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    padding: 40px;
+}
+
+.trigger {
+    position: absolute;
+    top: 50px;
+    font-size: 24px;
+    font-weight: 500;
 }

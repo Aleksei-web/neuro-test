@@ -81,7 +81,6 @@ export const SolutionRun = () => {
     }
 
     if (result.count === 24) {
-      console.log({ result });
       calculate();
       return;
     }
@@ -132,7 +131,6 @@ export const SolutionRun = () => {
       moveCircle({ x: 100, y: 100 });
     }
     if (tag === "circle") {
-      console.log("here");
       increaseClickCircle();
     }
     if (tag === "DIV") {
@@ -144,9 +142,6 @@ export const SolutionRun = () => {
     }
   };
 
-  /*
-   * возвращает процент
-   */
   const calculateLengthToCenter = (x: number, y: number) => {
     const minProcent = 25;
     const length = Math.pow(Math.abs(x), 2) + Math.pow(Math.abs(y), 2);
